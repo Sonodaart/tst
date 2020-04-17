@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>X</title>
+		<script>
+			function calcola(W,H,d,rs){
+			console.log(d);
+				r = "";
+				
+				r+= "#TOTA: ";
+				v1 = (parseInt(H/d)+1)*(parseInt(W/d)+1);
+				r+= v1+"<br>";
+				
+				/*h = parseInt(Math.sqrt(2)*H/d)+1;
+				
+				r+= "#TOTB1: ";
+				db = d*Math.sqrt(2);
+				v = (parseInt(h/2)+(h%2))*(parseInt(W/db)+1)+parseInt(h/2)*(parseInt((W-d/Math.sqrt(2))/db)+1);
+				r += v+"<br>";
+				
+				r+= "#TOTB2: ";
+				v = parseInt(h/2)*(parseInt(W/db)+1)+(parseInt(h/2)+(h%2))*(parseInt((W-d/Math.sqrt(2))/db)+1);
+				r += v+"<br>";*/
+				
+				h = parseInt((2*H)/(Math.sqrt(3)*d))+1;
+				
+				r+= "#TOTC1: ";
+				v = (parseInt(h/2)+(h%2))*(parseInt(W/d)+1)+parseInt(h/2)*(parseInt((W-d/2)/d)+1);
+				r += v+"<br>";
+				
+				/*r+= "#TOTC2: ";
+				v = parseInt(h/2)*(parseInt(W/d)+1)+(parseInt(h/2)+(h%2))*(parseInt((W-d/2)/d)+1);
+				r += v+"<br>";*/
+				
+				r += "___________________________diff: "+(v-v1);
+				
+				return r;
+			}
+			
+			function calcola2(W,H,d,rs){
+				var i;
+				rs.innerHTML = "";
+				for(i=20;i<50;++i){
+					rs.innerHTML += "H: "+i+"<br>"+calcola(W,i,d,rs)+"<hr>";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+			W:<input type="number" name=W><br><br>
+			H:<input type="number" name=H><br><br>
+			d:<input type="number" name=d><br><br>
+			<input type=button name=Btn onclick='calcola2(W.value,H.value,d.value,rs)' value="..."><br>
+			<hr>
+			<span id=rs></span>
+		</form>
+	</body>
+<html>
